@@ -25,7 +25,7 @@ sim = AerSimulator(method="matrix_product_state")
 data = []
 total_counts = Counter()
 
-for i in range(32,64,1):                            # BOND DIMENSIONS  
+for i in range(32,35,1):                            # BOND DIMENSIONS  
 
     ### --- we in the loop! --- ###
     
