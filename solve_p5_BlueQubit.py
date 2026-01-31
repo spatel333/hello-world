@@ -1,7 +1,7 @@
 from qiskit import QuantumCircuit
 from qiskit_aer import AerSimulator
 from qiskit import transpile
-# import matplotlib.pyplot as plt 
+import matplotlib.pyplot as plt 
 from qiskit.visualization import plot_histogram
 from collections import Counter
 
@@ -37,8 +37,8 @@ for i in range(32,64,1):                            # BOND DIMENSIONS
     for o in range(10):                             # 10 TRIALS       
         ### --- we in the inner loop! --- ###
         print("Running MPS simulation...")
-        print("\tBond Dim:\t{i}")
-        print("\tTrial:\t{o}")
+        print(f"\tBond Dim:\t{i}")
+        print(f"\tTrial:\t{o}")
         
         result = sim.run(qc_t, shots=512).result()
         counts = result.get_counts()
@@ -55,6 +55,7 @@ for trial_counts in data:
     total_counts.update(trial_counts)
 
 # Plotting the last result
-filtered_counts = {k: v for k, v in total_counts.items() if v > 100}
-plot_histogram(total_counts, title="MPS Simulation Bitstring Distribution", bar_labels=False)
+# filtered_counts = {k: v for k, v in total_counts.items() if v > 100}
+fig = plot_histogram(total_counts, title="MPS Simulation Bitstring Distribution", bar_labels=False)
 
+plt.show()
